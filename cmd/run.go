@@ -18,7 +18,7 @@ import (
 
 var runCmd = &cobra.Command{
 	Example: `
-	envault run --upper --env=dev -- npm run dev
+	envault run --upper --env=dev --path=nbm -- npm run dev
 	envault run --command "first-command && second-command; more-commands..."
 	`,
 	Use:                   "run [any envault run command flags] -- [your application start command]",
