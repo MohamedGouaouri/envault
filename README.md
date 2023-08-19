@@ -2,7 +2,7 @@
 A CLI tool that injects vault secrets into your application process.
 
 The goal of this CLI is to inject those secrets into the application's enviornment variables, removing the overhead of managing them in CI/CD enviornment for example.
-The tool is very similar (same approach) to the `infisical CLI` that can
+The tool is very similar to the `infisical CLI` that can
  be found [here](https://github.com/Infisical/infisical/tree/main/cli). The difference is that `infisical CLI` interacts with a dedicated `infisical` platform.
 
 ## How to use it?
