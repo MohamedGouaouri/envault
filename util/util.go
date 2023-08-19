@@ -8,12 +8,8 @@ import (
 	"github.com/fatih/color"
 )
 
-var VAULT_ADDR_DEFAULT = ""
+var VAULT_ADDR_DEFAULT = "http://127.0.0.1:8200"
 var CLI_VERSION = "0.0.1"
-
-func GetEnvFromWorkspaceFile() {
-
-}
 
 func HandleError(err error, messages ...string) {
 	PrintErrorAndExit(1, err, messages...)
@@ -31,6 +27,9 @@ func PrintErrorAndExit(exitCode int, err error, messages ...string) {
 	os.Exit(exitCode)
 }
 
+func PrintDebug(message string) {
+	color.New(color.FgHiMagenta).Fprintf(os.Stdout, "Debug: %v \n", message)
+}
 func PrintWarning(message string) {
 	color.New(color.FgYellow).Fprintf(os.Stderr, "Warning: %v \n", message)
 }

@@ -2,11 +2,13 @@ package client
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"path/filepath"
 	"time"
 
 	"github.com/MohamedGouaouri/envault/config"
+	"github.com/MohamedGouaouri/envault/util"
 	"github.com/hashicorp/vault-client-go"
 )
 
@@ -23,15 +25,15 @@ func GetAllEnvironmentVariables(token string, env string, path string) (map[stri
 	}
 
 	// authenticate with a root token (insecure)
-	if err := client.SetToken(config.VAULT_TOKEN); err != nil {
+	if err := client.SetToken(token); err != nil {
 		log.Fatalf("Auth %v\n", err)
 	}
 
-	log.Default().Printf("Reading from path %v", filepath.Join("secret", path))
+	util.PrintDebug(fmt.Sprintf("Reading from path %v", filepath.Join(env, path)))
 	// read the secrets
 	s, err := client.Secrets.KvV2Read(ctx, path, vault.WithMountPath(env))
 	if err != nil {
-		log.Default().Printf("Reading vault %v\n", err)
+		util.PrintWarning(fmt.Sprintf("Reading vault: %v", err))
 		return secrets, nil
 	}
 	for k, v := range s.Data.Data {

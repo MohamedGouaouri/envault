@@ -132,10 +132,10 @@ var runCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(runCmd)
 	runCmd.Flags().String("token", "", "Fetch secrets using the Infisical Token")
-	runCmd.Flags().StringP("env", "e", "secret", "Set the environment from which your secrets should be pulled from")
+	runCmd.Flags().StringP("env", "e", "secret", "Set the environment from which your secrets should be pulled from, it's the secret engine name in vault's terminology")
 	runCmd.Flags().StringP("command", "c", "", "Chained commands to execute (e.g. \"npm install && npm run dev; echo ...\")")
 	runCmd.Flags().String("path", "/", "Get secrets within a folder path")
-	runCmd.Flags().Bool("upper", true, "Make secrets upper case before passing them to process")
+	runCmd.Flags().Bool("upper", true, "Make secrets upper case before passing them to process (defaults to true)")
 }
 
 // Will execute a single command and pass in the given secrets into the process
